@@ -1,6 +1,7 @@
 import React from 'react';
 import SelectionBox from '../selectionBox/SelectionBox';
 import Button from '../button/Button';
+import ProgressBar from "../progressBar/ProgressBar";
 
 import './Styles.scss';
 
@@ -38,9 +39,17 @@ const LearningModule = ({setGameStatus}) => {
     })
   }
 
+  const [percentage, setPercentage] = React.useState(0);
+  React.useEffect(() => {
+    if(currentQuestionId < quizData.totalQuestions){
+      setPercentage(
+        (currentQuestionId + 1)/(quizData.totalQuestions + 1) * 100)
+    }    
+  },[currentQuestionId, quizData.totalQuestions])
 
   return (
     <div className="learningModule">
+      <ProgressBar percentage={percentage}/>
       { currentQuestion.title &&
         <>
           <div className="learningModule--header">

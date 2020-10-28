@@ -1,0 +1,17 @@
+@import "../../styles/utils/colors";
+
+.progress-bar {
+  position: relative;
+  height: 5px;
+  width: 95%;
+  border-radius: 50px;
+  border: 1px solid black;
+  margin: auto;
+
+  &--filler {
+    background: $barney;
+    height: 100%;
+    border-radius: inherit;
+    transition: width .5s ease-in;
+  }
+}
